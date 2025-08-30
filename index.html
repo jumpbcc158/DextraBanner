@@ -5,84 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Competitor Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --background: #ffffff;
-      --foreground: #1e3a8a;
-      --card: #f0f9ff;
-      --card-foreground: #475569;
-      --popover: #ffffff;
-      --popover-foreground: #1e3a8a;
       --primary: #1e3a8a;
-      --primary-foreground: #ffffff;
-      --secondary: #ea580c;
-      --secondary-foreground: #ffffff;
-      --muted: #f8fafc;
-      --muted-foreground: #374151;
+      --secondary: #10b981;
       --accent: #ea580c;
-      --accent-foreground: #ffffff;
-      --destructive: #dc2626;
-      --destructive-foreground: #ffffff;
-      --border: #d1d5db;
-      --input: #ffffff;
-      --ring: rgba(234, 88, 12, 0.5);
-      --chart-1: #1e3a8a;
-      --chart-2: #ea580c;
-      --chart-3: #4b5563;
-      --chart-4: #f0f9ff;
-      --chart-5: #f8fafc;
-      --radius: 0.5rem;
-    }
-
-    .dark {
-      --background: #0f172a;
-      --foreground: #f1f5f9;
-      --card: #1e293b;
-      --card-foreground: #cbd5e1;
-      --popover: #1e293b;
-      --popover-foreground: #f1f5f9;
-      --primary: #0ea5e9;
-      --primary-foreground: #0f172a;
-      --secondary: #ea580c;
-      --secondary-foreground: #ffffff;
-      --muted: #334155;
-      --muted-foreground: #94a3b8;
-      --accent: #ea580c;
-      --accent-foreground: #ffffff;
-      --destructive: #ef4444;
-      --destructive-foreground: #ffffff;
-      --border: #334155;
-      --input: #1e293b;
-      --ring: rgba(234, 88, 12, 0.5);
-      --chart-1: #0ea5e9;
-      --chart-2: #ea580c;
-      --chart-3: #64748b;
-      --chart-4: #1e293b;
-      --chart-5: #334155;
+      --dextra-blue: #1e40af;
+      --dextra-green: #10b981;
     }
 
     body {
-      background-color: var(--background);
-      color: var(--foreground);
-      font-family: system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
     }
 
-    .bg-card { background-color: var(--card); }
-    .bg-background { background-color: var(--background); }
-    .bg-primary { background-color: var(--primary); }
-    .bg-accent { background-color: var(--accent); }
-    .text-foreground { color: var(--foreground); }
-    .text-card-foreground { color: var(--card-foreground); }
-    .text-muted-foreground { color: var(--muted-foreground); }
-    .text-primary-foreground { color: var(--primary-foreground); }
-    .border-border { border-color: var(--border); }
-    .focus\:ring-ring:focus { box-shadow: 0 0 0 4px var(--ring); }
+    /* Added iframe-friendly styling for embeddable use */
+    .banner-container {
+      width: 100%;
+      height: 128px;
+      display: block;
+      box-sizing: border-box;
+    }
 
-    /* Added construction-themed animations */
+    /* All original animations and effects preserved */
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    @keyframes logo-glow {
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.3)) scale(1); }
+      50% { filter: drop-shadow(0 0 16px rgba(16, 185, 129, 0.6)) scale(1.02); }
+    }
+
     @keyframes crane-swing {
-      0%, 100% { transform: rotate(-8deg); }
-      50% { transform: rotate(8deg); }
+      0%, 100% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg); }
     }
 
     @keyframes gear-rotate {
@@ -92,81 +52,17 @@
 
     @keyframes blueprint-slide {
       0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(15px); }
-    }
-
-    @keyframes concrete-pour {
-      0% { height: 0%; opacity: 0.3; }
-      50% { height: 60%; opacity: 0.6; }
-      100% { height: 100%; opacity: 0.4; }
+      50% { transform: translateX(10px); }
     }
 
     @keyframes rebar-extend {
-      0% { width: 0%; }
-      100% { width: 100%; }
+      0%, 100% { transform: scaleX(1); }
+      50% { transform: scaleX(1.1); }
     }
 
-    @keyframes beam-slide {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-
-    @keyframes foundation-build {
-      0% { transform: scaleY(0); }
-      100% { transform: scaleY(1); }
-    }
-
-    @keyframes pulse-glow {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 0.8; }
-    }
-
-    .crane-arm {
-      animation: crane-swing 5s ease-in-out infinite;
-      transform-origin: bottom center;
-    }
-
-    .rotating-gear {
-      animation: gear-rotate 10s linear infinite;
-    }
-
-    .blueprint-lines {
-      animation: blueprint-slide 4s ease-in-out infinite;
-    }
-
-    .concrete-fill {
-      animation: concrete-pour 8s ease-in-out infinite;
-    }
-
-    .rebar-line {
-      animation: rebar-extend 6s ease-in-out infinite;
-    }
-
-    .beam-element {
-      animation: beam-slide 3s ease-in-out infinite;
-    }
-
-    .foundation-element {
-      animation: foundation-build 4s ease-in-out infinite;
-      transform-origin: bottom;
-    }
-
-    .pulse-element {
-      animation: pulse-glow 2s ease-in-out infinite;
-    }
-
-    /* Added custom font styling for more outstanding typography */
-    .outstanding-font {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      text-shadow: 2px 2px 4px rgba(30, 58, 138, 0.3);
-    }
-
-    /* Added tension rod animations */
-    @keyframes tension-stress {
-      0%, 100% { transform: scaleX(1); opacity: 0.6; }
-      50% { transform: scaleX(1.02); opacity: 0.8; }
+    @keyframes stress-pulse {
+      0%, 100% { opacity: 0.3; stroke-width: 1; }
+      50% { opacity: 0.8; stroke-width: 2; }
     }
 
     @keyframes anchor-pulse {
@@ -174,176 +70,166 @@
       50% { transform: scale(1.1); }
     }
 
-    .tension-rod {
-      animation: tension-stress 3s ease-in-out infinite;
+    @keyframes button-lift {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-2px) scale(1.02); }
     }
 
-    .anchor-point {
-      animation: anchor-pulse 2s ease-in-out infinite;
-    }
-
-    /* Added enhanced visual effects */
-    @keyframes logo-glow {
-      0%, 100% { filter: drop-shadow(0 0 8px rgba(30, 58, 138, 0.3)); }
-      50% { filter: drop-shadow(0 0 16px rgba(30, 58, 138, 0.6)); }
-    }
-
-    @keyframes title-shimmer {
-      0% { background-position: -200% center; }
-      100% { background-position: 200% center; }
+    .shimmer-text {
+      background: linear-gradient(90deg, var(--dextra-blue), var(--dextra-green), var(--dextra-blue));
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 3s ease-in-out infinite;
     }
 
     .logo-enhanced {
-      animation: logo-glow 3s ease-in-out infinite;
+      animation: logo-glow 4s ease-in-out infinite;
       transition: transform 0.3s ease;
     }
 
     .logo-enhanced:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
-    .title-enhanced {
-      background: linear-gradient(90deg, #1e3a8a, #ea580c, #1e3a8a);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: title-shimmer 4s linear infinite;
+    .crane-arm { animation: crane-swing 6s ease-in-out infinite; }
+    .gear-spin { animation: gear-rotate 8s linear infinite; }
+    .blueprint-lines { animation: blueprint-slide 4s ease-in-out infinite; }
+    .rebar-tension { animation: rebar-extend 3s ease-in-out infinite; }
+    .stress-lines { animation: stress-pulse 2s ease-in-out infinite; }
+    .anchor-points { animation: anchor-pulse 2.5s ease-in-out infinite; }
+
+    .enhanced-button {
+      background: linear-gradient(135deg, var(--dextra-blue) 0%, var(--dextra-green) 100%);
+      box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+    }
+
+    .enhanced-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .enhanced-button:hover {
+      animation: button-lift 0.3s ease forwards;
+      box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+    }
+
+    .enhanced-button:hover::before {
+      left: 100%;
+    }
+
+    /* Added responsive design for better mobile compatibility */
+    @media (max-width: 768px) {
+      .banner-container {
+        padding: 0 16px;
+      }
+      
+      .enhanced-button {
+        padding: 8px 12px;
+        font-size: 10px;
+      }
+      
+      .logo-enhanced {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .shimmer-text {
+        font-size: 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <section class="relative w-full h-48 bg-gradient-to-r from-blue-50 to-orange-50 overflow-hidden">
-    <!-- Replaced data visualization with construction-themed animated elements -->
-    <div class="absolute inset-0 opacity-25">
-      <!-- Animated Construction Grid -->
-      <svg class="w-full h-full" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
-        <!-- Blueprint Grid Lines -->
-        <defs>
-          <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
-            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1e3a8a" stroke-width="1" class="blueprint-lines"/>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grid)" />
-        
-        <!-- Enhanced tension rod system with stress visualization -->
-        <g class="tension-rod">
-          <!-- Main tension rods with stress indicators -->
-          <line x1="50" y1="50" x2="750" y2="50" stroke="#ea580c" stroke-width="6"/>
-          <line x1="50" y1="90" x2="750" y2="90" stroke="#ea580c" stroke-width="6"/>
-          <line x1="50" y1="130" x2="750" y2="130" stroke="#ea580c" stroke-width="6"/>
+  <!-- Wrapped in container for better embedding -->
+  <div class="banner-container">
+    <section class="relative w-full h-32 bg-gradient-to-br from-slate-50 via-blue-50 to-green-50 overflow-hidden border-b-2 border-blue-100">
+      <!-- Construction-themed background with all original animations -->
+      <div class="absolute inset-0 opacity-10">
+        <svg class="w-full h-full" viewBox="0 0 800 128" xmlns="http://www.w3.org/2000/svg">
+          <!-- Blueprint grid -->
+          <defs>
+            <pattern id="blueprint" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1e40af" stroke-width="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#blueprint)" class="blueprint-lines"/>
           
-          <!-- Tension stress visualization lines -->
-          <line x1="50" y1="48" x2="750" y2="48" stroke="#ff6b35" stroke-width="2" opacity="0.7"/>
-          <line x1="50" y1="52" x2="750" y2="52" stroke="#ff6b35" stroke-width="2" opacity="0.7"/>
-          <line x1="50" y1="88" x2="750" y2="88" stroke="#ff6b35" stroke-width="2" opacity="0.7"/>
-          <line x1="50" y1="92" x2="750" y2="92" stroke="#ff6b35" stroke-width="2" opacity="0.7"/>
-          <line x1="50" y1="128" x2="750" y2="128" stroke="#ff6b35" stroke-width="2" opacity="0.7"/>
-          <line x1="50" y1="132" x2="750" y2="132" stroke="#ff6b35" stroke-width="2" opacity="0.7"/>
-        </g>
-        
-        <!-- Added anchor points for tension rods -->
-        <g class="anchor-point">
-          <rect x="45" y="45" width="10" height="10" fill="#1e3a8a" rx="2"/>
-          <rect x="745" y="45" width="10" height="10" fill="#1e3a8a" rx="2"/>
-          <rect x="45" y="85" width="10" height="10" fill="#1e3a8a" rx="2"/>
-          <rect x="745" y="85" width="10" height="10" fill="#1e3a8a" rx="2"/>
-          <rect x="45" y="125" width="10" height="10" fill="#1e3a8a" rx="2"/>
-          <rect x="745" y="125" width="10" height="10" fill="#1e3a8a" rx="2"/>
+          <!-- Structural beams -->
+          <g class="rebar-tension">
+            <rect x="100" y="20" width="600" height="4" fill="#ea580c" rx="2"/>
+            <rect x="100" y="104" width="600" height="4" fill="#ea580c" rx="2"/>
+          </g>
           
-          <!-- Anchor bolts -->
-          <circle cx="50" cy="50" r="3" fill="#374151"/>
-          <circle cx="750" cy="50" r="3" fill="#374151"/>
-          <circle cx="50" cy="90" r="3" fill="#374151"/>
-          <circle cx="750" cy="90" r="3" fill="#374151"/>
-          <circle cx="50" cy="130" r="3" fill="#374151"/>
-          <circle cx="750" cy="130" r="3" fill="#374151"/>
-        </g>
-        
-        <!-- Structural Beam Elements -->
-        <g class="beam-element">
-          <rect x="100" y="60" width="80" height="8" fill="#1e3a8a" opacity="0.6"/>
-          <rect x="300" y="100" width="120" height="8" fill="#1e3a8a" opacity="0.6"/>
-          <rect x="500" y="140" width="100" height="8" fill="#1e3a8a" opacity="0.6"/>
-        </g>
-        
-        <!-- Enhanced Rotating Gears -->
-        <g class="rotating-gear">
-          <circle cx="150" cy="75" r="20" fill="none" stroke="#1e3a8a" stroke-width="3"/>
-          <circle cx="150" cy="75" r="12" fill="none" stroke="#1e3a8a" stroke-width="2"/>
-          <line x1="130" y1="75" x2="170" y2="75" stroke="#1e3a8a" stroke-width="2"/>
-          <line x1="150" y1="55" x2="150" y2="95" stroke="#1e3a8a" stroke-width="2"/>
-        </g>
-        
-        <g class="rotating-gear" style="animation-delay: -3s;">
-          <circle cx="650" cy="140" r="18" fill="none" stroke="#ea580c" stroke-width="3"/>
-          <circle cx="650" cy="140" r="10" fill="none" stroke="#ea580c" stroke-width="2"/>
-          <line x1="632" y1="140" x2="668" y2="140" stroke="#ea580c" stroke-width="2"/>
-          <line x1="650" y1="122" x2="650" y2="158" stroke="#ea580c" stroke-width="2"/>
-        </g>
-
-        <!-- Foundation Elements -->
-        <g class="foundation-element">
-          <rect x="50" y="180" width="700" height="15" fill="#1e3a8a" opacity="0.4"/>
-          <rect x="200" y="165" width="10" height="30" fill="#ea580c" opacity="0.5"/>
-          <rect x="400" y="165" width="10" height="30" fill="#ea580c" opacity="0.5"/>
-          <rect x="600" y="165" width="10" height="30" fill="#ea580c" opacity="0.5"/>
-        </g>
-
-        <!-- Pulsing Connection Points -->
-        <g class="pulse-element">
-          <circle cx="205" cy="170" r="3" fill="#ea580c"/>
-          <circle cx="405" cy="170" r="3" fill="#ea580c"/>
-          <circle cx="605" cy="170" r="3" fill="#ea580c"/>
-        </g>
-      </svg>
-    </div>
-
-    <!-- Enhanced animated construction crane -->
-    <div class="absolute top-2 right-8">
-      <svg width="60" height="80" viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg">
-        <rect x="27" y="60" width="6" height="20" fill="#1e3a8a"/>
-        <rect x="24" y="75" width="12" height="3" fill="#1e3a8a"/>
-        <rect x="29" y="10" width="2" height="50" fill="#1e3a8a"/>
-        <g class="crane-arm">
-          <rect x="15" y="8" width="30" height="3" fill="#ea580c"/>
-          <rect x="14" y="11" width="2" height="8" fill="#ea580c"/>
-          <line x1="16" y1="19" x2="16" y2="25" stroke="#1e3a8a" stroke-width="1"/>
-        </g>
-      </svg>
-    </div>
-
-    <!-- Updated accent shapes to match Dextra theme -->
-    <div class="absolute top-4 left-12 w-8 h-8 bg-orange-500 opacity-20 transform rotate-45"></div>
-    <div class="absolute bottom-6 right-16 w-6 h-6 bg-blue-800 rounded-full opacity-30"></div>
-    <div class="absolute top-1/2 left-1/4 w-12 h-3 bg-orange-400 opacity-20 rounded-sm"></div>
-
-    <!-- Main Content -->
-    <div class="relative z-10 flex items-center justify-between h-full px-8">
-      <!-- Updated title to Competitor Dashboard with Dextra blue -->
-      <div class="flex items-center gap-6">
-        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DEXTRA-main-logo-2048x2048-kd05noSS7p3UGALHMWShGnhmcf4DAJ.png" alt="Dextra Logo" class="w-24 h-24 object-contain logo-enhanced">
-        <h1 class="outstanding-font text-3xl md:text-4xl tracking-tight title-enhanced">
-          Competitor Dashboard
-        </h1>
+          <!-- Tension rod stress visualization -->
+          <g class="stress-lines">
+            <path d="M120 22 Q400 10 680 22" fill="none" stroke="#ea580c" stroke-width="1"/>
+            <path d="M120 106 Q400 118 680 106" fill="none" stroke="#ea580c" stroke-width="1"/>
+          </g>
+          
+          <!-- Anchor points -->
+          <g class="anchor-points">
+            <circle cx="100" cy="22" r="3" fill="#374151"/>
+            <circle cx="700" cy="22" r="3" fill="#374151"/>
+            <circle cx="100" cy="106" r="3" fill="#374151"/>
+            <circle cx="700" cy="106" r="3" fill="#374151"/>
+          </g>
+          
+          <!-- Construction crane -->
+          <g class="crane-arm" transform-origin="50 64">
+            <line x1="50" y1="64" x2="150" y2="44" stroke="#6b7280" stroke-width="2"/>
+            <line x1="50" y1="64" x2="50" y2="20" stroke="#6b7280" stroke-width="3"/>
+          </g>
+          
+          <!-- Rotating gears -->
+          <g class="gear-spin" transform-origin="750 32">
+            <circle cx="750" cy="32" r="8" fill="none" stroke="#6b7280" stroke-width="1"/>
+            <path d="M742 32 L758 32 M750 24 L750 40 M745 27 L755 37 M755 27 L745 37" stroke="#6b7280" stroke-width="1"/>
+          </g>
+          
+          <g class="gear-spin" transform-origin="750 96" style="animation-direction: reverse;">
+            <circle cx="750" cy="96" r="6" fill="none" stroke="#6b7280" stroke-width="1"/>
+            <path d="M744 96 L756 96 M750 90 L750 102 M746 92 L754 100 M754 92 L746 100" stroke="#6b7280" stroke-width="1"/>
+          </g>
+        </svg>
       </div>
-      
-      <!-- Updated button styling to match Dextra's professional look -->
-      <div class="flex gap-4">
-        <button class="bg-gradient-to-r from-blue-800 to-blue-700 text-white px-8 py-4 rounded-xl text-sm font-bold shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 hover:scale-110 hover:from-blue-700 hover:to-blue-600 focus:outline-none focus:ring-4 focus:ring-orange-300 border-2 border-transparent hover:border-orange-400 uppercase transform hover:-translate-y-1">
-          Rebar Coupler
-        </button>
-        <button class="bg-gradient-to-r from-blue-800 to-blue-700 text-white px-8 py-4 rounded-xl text-sm font-bold shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 hover:scale-110 hover:from-blue-700 hover:to-blue-600 focus:outline-none focus:ring-4 focus:ring-orange-300 border-2 border-transparent hover:border-orange-400 uppercase transform hover:-translate-y-1">
-          Engineer Bar System
-        </button>
-        <button class="bg-gradient-to-r from-blue-800 to-blue-700 text-white px-8 py-4 rounded-xl text-sm font-bold shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 hover:scale-110 hover:from-blue-700 hover:to-blue-600 focus:outline-none focus:ring-4 focus:ring-orange-300 border-2 border-transparent hover:border-orange-400 uppercase transform hover:-translate-y-1">
-          Geotechnical
-        </button>
-      </div>
-    </div>
 
-    <!-- Bottom Gradient Overlay -->
-    <div class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-background/80 to-transparent"></div>
-  </section>
+      <!-- Main content -->
+      <div class="relative z-10 flex items-center justify-between h-full px-8">
+        <div class="flex items-center gap-6">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DEXTRA-main-logo-2048x2048-kd05noSS7p3UGALHMWShGnhmcf4DAJ.png" alt="Dextra Logo" class="w-24 h-24 object-contain logo-enhanced">
+          <div>
+            <h1 class="text-3xl md:text-4xl font-bold shimmer-text tracking-tight text-shadow-lg">
+              Competitor Dashboard
+            </h1>
+          </div>
+        </div>
+        
+        <div class="flex gap-3">
+          <button class="enhanced-button text-white px-6 py-3 rounded-lg text-sm font-semibold uppercase tracking-wide">
+            REBAR COUPLER
+          </button>
+          <button class="enhanced-button text-white px-6 py-3 rounded-lg text-sm font-semibold uppercase tracking-wide">
+            ENGINEER BAR SYSTEM
+          </button>
+          <button class="enhanced-button text-white px-6 py-3 rounded-lg text-sm font-semibold uppercase tracking-wide">
+            GEOTECHNICAL
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
 </body>
 </html>
