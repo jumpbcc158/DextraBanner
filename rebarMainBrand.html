@@ -6,114 +6,138 @@
   <title>Brand Rail</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --logo-w: 140px; } /* default logo width (16:9 height auto) */
+    :root { --logo-w: 160px; }                 /* auto-set by JS */
+    html, body { height: 100%; }
+    /* CHANGED: give the embed a solid blue background */
+    body { margin: 0; background:#0048b6; }
+
     .scrollbar-hide::-webkit-scrollbar { display: none; }
     .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-    .dx-logo-frame{
-      width:var(--logo-w);
-      aspect-ratio:16/9;
-      background:#fff; border-radius:12px;
-      box-shadow:0 1px 3px rgba(0,0,0,.06);
-      display:flex; align-items:center; justify-content:center;
-      overflow:hidden;
+    /* Dense container */
+    .rail-wrap { height: 100%; padding: 6px 8px; }
+    .rail-shell {
+      height: 100%;
+      padding: 8px;
+      background: rgba(255,255,255,.78);       /* sits on top of the blue */
+      backdrop-filter: blur(4px);
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.08);
+      border: 1px solid rgba(255,255,255,.25);
     }
-    .dx-logo-frame img{ max-width:92%; max-height:92%; object-fit:contain; display:block; }
+
+    .brand-card { padding: 8px; }
+    .dx-logo-frame{
+      width: var(--logo-w);
+      aspect-ratio: 16 / 9;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .dx-logo-frame img { max-width: 92%; max-height: 92%; object-fit: contain; display: block; }
   </style>
 </head>
-<body class="bg-slate-50 p-4">
-  <div class="bg-white/70 backdrop-blur-sm rounded-xl shadow-lg border border-white/20 p-3">
-    <div class="flex items-center gap-4 overflow-x-auto pb-2 scrollbar-hide">
+<body>
+  <div class="rail-wrap">
+    <div class="rail-shell">
+      <div id="rail" class="flex items-center h-full gap-4 overflow-x-auto scrollbar-hide">
 
-      <!-- Leviat MOMENT -->
-      <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c1.aspx"
-         target="_top"
-         data-brand="Leviat MOMENT"
-         class="brand-card group relative flex-shrink-0 p-3 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
-        <div class="relative">
-          <div class="dx-logo-frame">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Leviat_Moment_16x9-dGUecxW9QKFDAke2I0wPyOkQe7TYiM.png" alt="Leviat MOMENT" />
+        <!-- Leviat MOMENT -->
+        <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c1.aspx"
+           target="_top"
+           data-brand="Leviat MOMENT"
+           class="brand-card group relative flex-shrink-0 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
+          <div class="relative">
+            <div class="dx-logo-frame">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Leviat_Moment_16x9-dGUecxW9QKFDAke2I0wPyOkQe7TYiM.png" alt="Leviat MOMENT" />
+            </div>
+            <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
           </div>
-          <!-- overlays must NOT intercept clicks -->
-          <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
-        </div>
-        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
-      </a>
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
+        </a>
 
-      <!-- Leviat Ancon -->
-      <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c2.aspx"
-         target="_top"
-         data-brand="Leviat Ancon"
-         class="brand-card group relative flex-shrink-0 p-3 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
-        <div class="relative">
-          <div class="dx-logo-frame">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Leviat_Ancon_16x9-xQFTnjDkwMsCXuCQJsyc7m612npGqE.png" alt="Leviat Ancon" />
+        <!-- Leviat Ancon -->
+        <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c2.aspx"
+           target="_top"
+           data-brand="Leviat Ancon"
+           class="brand-card group relative flex-shrink-0 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
+          <div class="relative">
+            <div class="dx-logo-frame">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Leviat_Ancon_16x9-xQFTnjDkwMsCXuCQJsyc7m612npGqE.png" alt="Leviat Ancon" />
+            </div>
+            <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
           </div>
-          <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
-        </div>
-        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
-      </a>
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
+        </a>
 
-      <!-- nVent LENTON -->
-      <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c3.aspx"
-         target="_top"
-         data-brand="nVent LENTON"
-         class="brand-card group relative flex-shrink-0 p-3 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
-        <div class="relative">
-          <div class="dx-logo-frame">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nVent_Lenton_16x9-Q5qIGYYh5nh0ovgpmr5JvXuElxzzjS.png" alt="nVent LENTON" />
+        <!-- nVent LENTON -->
+        <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c3.aspx"
+           target="_top"
+           data-brand="nVent LENTON"
+           class="brand-card group relative flex-shrink-0 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
+          <div class="relative">
+            <div class="dx-logo-frame">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nVent_Lenton_16x9-Q5qIGYYh5nh0ovgpmr5JvXuElxzzjS.png" alt="nVent LENTON" />
+            </div>
+            <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
           </div>
-          <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
-        </div>
-        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
-      </a>
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
+        </a>
 
-      <!-- NMB Splice Sleeve -->
-      <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c4.aspx"
-         target="_top"
-         data-brand="NMB Splice Sleeve"
-         class="brand-card group relative flex-shrink-0 p-3 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
-        <div class="relative">
-          <div class="dx-logo-frame">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/NMB_Splice_Sleeve_16x9-AAYZ4tCEYJO0Ye6By7IQwqr0c62ylP.png" alt="NMB Splice Sleeve" />
+        <!-- NMB Splice Sleeve -->
+        <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c4.aspx"
+           target="_top"
+           data-brand="NMB Splice Sleeve"
+           class="brand-card group relative flex-shrink-0 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
+          <div class="relative">
+            <div class="dx-logo-frame">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/NMB_Splice_Sleeve_16x9-AAYZ4tCEYJO0Ye6By7IQwqr0c62ylP.png" alt="NMB Splice Sleeve" />
+            </div>
+            <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
           </div>
-          <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
-        </div>
-        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
-      </a>
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
+        </a>
 
-      <!-- Boowon BMS -->
-      <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c5.aspx"
-         target="_top"
-         data-brand="Boowon BMS"
-         class="brand-card group relative flex-shrink-0 p-3 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
-        <div class="relative">
-          <div class="dx-logo-frame">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Boowon_BMS_16x9-NMRXGjqlOv5EHlYqmWDX8OX5Fz9ln9.png" alt="Boowon BMS" />
+        <!-- Boowon BMS -->
+        <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c5.aspx"
+           target="_top"
+           data-brand="Boowon BMS"
+           class="brand-card group relative flex-shrink-0 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
+          <div class="relative">
+            <div class="dx-logo-frame">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Boowon_BMS_16x9-NMRXGjqlOv5EHlYqmWDX8OX5Fz9ln9.png" alt="Boowon BMS" />
+            </div>
+            <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
           </div>
-          <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
-        </div>
-        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
-      </a>
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
+        </a>
 
+      </div>
     </div>
   </div>
 
-  <!-- Helpers: size override & active highlight (no nav override) -->
   <script>
-    (function(){
+    (function () {
       const qs = new URLSearchParams(location.search);
+      const forced = parseInt(qs.get('size'), 10);
 
-      // Optional per-embed size override: ?size=120..320
-      const size = parseInt(qs.get('size'),10);
-      if (Number.isFinite(size) && size>=60 && size<=320) {
-        document.documentElement.style.setProperty('--logo-w', size + 'px');
+      function fitByHeight() {
+        if (Number.isFinite(forced)) {
+          document.documentElement.style.setProperty('--logo-w', forced + 'px');
+          return;
+        }
+        const rail = document.getElementById('rail');
+        const railH = rail?.clientHeight || window.innerHeight || 140;
+        const usableH = Math.max(64, railH - 28);
+        const logoW = Math.min(320, Math.round((usableH * 16) / 9));
+        document.documentElement.style.setProperty('--logo-w', logoW + 'px');
       }
 
-      // Active highlight via ?brand=...
-      const norm = s => decodeURIComponent(String(s||'').toLowerCase().trim());
+      const norm = s => decodeURIComponent(String(s || '').toLowerCase().trim());
       const activeBrand = norm(qs.get('brand'));
-      document.querySelectorAll('.brand-card').forEach(card=>{
+      document.querySelectorAll('.brand-card').forEach(card => {
         const name = norm(card.dataset.brand);
         const overlay = card.querySelector('.active-overlay');
         const on = activeBrand && activeBrand === name;
@@ -127,6 +151,9 @@
         overlay && overlay.classList.toggle('opacity-30', on);
         overlay && overlay.classList.toggle('opacity-0', !on);
       });
+
+      fitByHeight();
+      window.addEventListener('resize', fitByHeight);
     })();
   </script>
 </body>
