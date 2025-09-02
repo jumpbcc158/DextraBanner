@@ -16,8 +16,10 @@
   <div class="bg-white/70 backdrop-blur-sm rounded-xl shadow-lg border border-white/20 p-3">
     <div class="flex items-center gap-3 overflow-x-auto pb-1 scrollbar-hide">
 
-      <!-- Card template: use <a> to navigate -->
-      <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c1.aspx" data-brand="Leviat MOMENT"
+      <!-- Card template: use <a> to navigate (target _top = refresh whole SharePoint page) -->
+      <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c1.aspx"
+         target="_top" rel="noopener"
+         data-brand="Leviat MOMENT"
          class="brand-card group relative flex-shrink-0 p-3 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
         <div class="relative">
           <div class="w-20 h-12 flex items-center justify-center bg-white rounded-lg shadow-sm overflow-hidden">
@@ -28,7 +30,9 @@
         <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
       </a>
 
-      <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c2.aspx" data-brand="Leviat Ancon"
+      <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c2.aspx"
+         target="_top" rel="noopener"
+         data-brand="Leviat Ancon"
          class="brand-card group relative flex-shrink-0 p-3 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
         <div class="relative">
           <div class="w-20 h-12 flex items-center justify-center bg-white rounded-lg shadow-sm overflow-hidden">
@@ -39,7 +43,9 @@
         <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
       </a>
 
-      <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c3.aspx" data-brand="nVent LENTON"
+      <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c3.aspx"
+         target="_top" rel="noopener"
+         data-brand="nVent LENTON"
          class="brand-card group relative flex-shrink-0 p-3 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
         <div class="relative">
           <div class="w-20 h-12 flex items-center justify-center bg-white rounded-lg shadow-sm overflow-hidden">
@@ -50,7 +56,9 @@
         <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
       </a>
 
-      <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c4.aspx" data-brand="NMB Splice Sleeve"
+      <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c4.aspx"
+         target="_top" rel="noopener"
+         data-brand="NMB Splice Sleeve"
          class="brand-card group relative flex-shrink-0 p-3 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
         <div class="relative">
           <div class="w-20 h-12 flex items-center justify-center bg-white rounded-lg shadow-sm overflow-hidden">
@@ -61,7 +69,9 @@
         <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
       </a>
 
-      <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c5.aspx" data-brand="Boowon BMS"
+      <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c5.aspx"
+         target="_top" rel="noopener"
+         data-brand="Boowon BMS"
          class="brand-card group relative flex-shrink-0 p-3 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
         <div class="relative">
           <div class="w-20 h-12 flex items-center justify-center bg-white rounded-lg shadow-sm overflow-hidden">
@@ -76,7 +86,27 @@
   </div>
 
   <script>
-    // highlight active card using the ?brand= param (or page title fallback)
+    // Force navigation to the TOP window (SharePoint page) even if the host ignores target=_top
+    document.querySelectorAll('.brand-card').forEach(card => {
+      card.addEventListener('click', function (e) {
+        // allow ctrl/cmd click to open in new tab
+        if (e.metaKey || e.ctrlKey || e.button === 1) return;
+        e.preventDefault();
+        const url = this.getAttribute('href');
+        try {
+          if (window.top && window.top !== window) {
+            window.top.location.assign(url);   // refreshes full SharePoint page
+          } else {
+            window.location.assign(url);
+          }
+        } catch (err) {
+          // fallback: open in same frame
+          window.location.href = url;
+        }
+      });
+    });
+
+    // Highlight active card using the ?brand= param (or page title fallback)
     (function(){
       const norm = s => decodeURIComponent(String(s||'').toLowerCase().trim());
       const brandParam = norm(new URLSearchParams(location.search).get('brand'));
