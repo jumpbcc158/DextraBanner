@@ -3,142 +3,133 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Brand Navigation</title>
+  <title>Brand Rail</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    :root { --logo-w: 140px; }
     .scrollbar-hide::-webkit-scrollbar { display: none; }
     .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-
-    /* width of each 16:9 logo frame (height auto from aspect-ratio) */
-    :root { --logo-w: 140px; }                 /* default for embeds */
-    .dx-logo-frame {
-      width: var(--logo-w);
-      aspect-ratio: 16 / 9;
-      background:#fff; border-radius:12px;
-      box-shadow:0 1px 3px rgba(0,0,0,.06);
-      display:flex; align-items:center; justify-content:center;
-      overflow:hidden;
+    .dx-logo-frame{
+      width:var(--logo-w); aspect-ratio:16/9; background:#fff; border-radius:12px;
+      box-shadow:0 1px 3px rgba(0,0,0,.06); display:flex; align-items:center; justify-content:center; overflow:hidden;
     }
-    .dx-logo-frame img { max-width:92%; max-height:92%; object-fit:contain; display:block; }
+    .dx-logo-frame img{ max-width:92%; max-height:92%; object-fit:contain; display:block; }
   </style>
 </head>
-<body class="bg-slate-50 p-3">
+<body class="bg-slate-50 p-4">
   <div class="bg-white/70 backdrop-blur-sm rounded-xl shadow-lg border border-white/20 p-3">
     <div class="flex items-center gap-4 overflow-x-auto pb-2 scrollbar-hide">
 
       <!-- Leviat MOMENT -->
       <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c1.aspx"
-            
-         data-brand="Leviat MOMENT"
          target="_top"
+         data-brand="Leviat MOMENT"
          class="brand-card group relative flex-shrink-0 p-3 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
         <div class="relative">
           <div class="dx-logo-frame">
             <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Leviat_Moment_16x9-dGUecxW9QKFDAke2I0wPyOkQe7TYiM.png" alt="Leviat MOMENT" />
           </div>
-          <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300"></div>
+          <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
         </div>
-        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
+        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
       </a>
 
       <!-- Leviat Ancon -->
       <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c2.aspx"
+         target="_top"
          data-brand="Leviat Ancon"
          class="brand-card group relative flex-shrink-0 p-3 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
         <div class="relative">
           <div class="dx-logo-frame">
             <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Leviat_Ancon_16x9-xQFTnjDkwMsCXuCQJsyc7m612npGqE.png" alt="Leviat Ancon" />
           </div>
-          <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300"></div>
+          <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
         </div>
-        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
+        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
       </a>
 
       <!-- nVent LENTON -->
       <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c3.aspx"
+         target="_top"
          data-brand="nVent LENTON"
          class="brand-card group relative flex-shrink-0 p-3 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
         <div class="relative">
           <div class="dx-logo-frame">
             <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nVent_Lenton_16x9-Q5qIGYYh5nh0ovgpmr5JvXuElxzzjS.png" alt="nVent LENTON" />
           </div>
-          <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300"></div>
+          <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
         </div>
-        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
+        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
       </a>
 
       <!-- NMB Splice Sleeve -->
       <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c4.aspx"
-         target="_top" 
+         target="_top"
          data-brand="NMB Splice Sleeve"
          class="brand-card group relative flex-shrink-0 p-3 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
         <div class="relative">
           <div class="dx-logo-frame">
             <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/NMB_Splice_Sleeve_16x9-AAYZ4tCEYJO0Ye6By7IQwqr0c62ylP.png" alt="NMB Splice Sleeve" />
           </div>
-          <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300"></div>
+          <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
         </div>
-        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
+        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
       </a>
 
       <!-- Boowon BMS -->
       <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c5.aspx"
+         target="_top"
          data-brand="Boowon BMS"
          class="brand-card group relative flex-shrink-0 p-3 rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 bg-white/60 backdrop-blur-sm border border-gray-200/50 hover:bg-white/80 hover:shadow-lg">
         <div class="relative">
           <div class="dx-logo-frame">
             <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Boowon_BMS_16x9-NMRXGjqlOv5EHlYqmWDX8OX5Fz9ln9.png" alt="Boowon BMS" />
           </div>
-          <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300"></div>
+          <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
         </div>
-        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
+        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
       </a>
 
     </div>
   </div>
 
   <script>
-    /* 1) Same-tab navigation via rebarMain (postMessage). Remove if not needed. */
-    const PARENT_ORIGIN = "https://dextranet.sharepoint.com";
-    document.querySelectorAll('.brand-card').forEach(card => {
-      card.addEventListener('click', function (e) {
-        if (e.metaKey || e.ctrlKey || e.button === 1) return; // allow new-tab
-        e.preventDefault();
-        const url = this.getAttribute('href');
-        try { window.top.postMessage({ type: 'rebarMain:nav', url }, PARENT_ORIGIN); }
-        catch { window.open(url, '_blank', 'noopener'); }
-      });
-    });
-
-    /* 2) Size & highlight tuned for SharePoint EMBED */
     (function(){
-      const norm = s => decodeURIComponent(String(s||'').toLowerCase().trim());
       const qs = new URLSearchParams(location.search);
 
-      // a) allow manual override: ?size=160
-      const sizeParam = parseInt(qs.get('size'), 10);
+      // Optional per-embed size override: ?size=120..320
+      const size = parseInt(qs.get('size'),10);
+      if (Number.isFinite(size) && size>=60 && size<=320) {
+        document.documentElement.style.setProperty('--logo-w', size + 'px');
+      }
 
-      // b) auto-size from iframe height (works in SharePoint embed)
-      let auto = Math.max(80, Math.min(280, Math.round((window.innerHeight || 140) - 60)));
-      //    ^ 60px accounts for card padding & shadows
-      const finalSize = Number.isFinite(sizeParam) ? sizeParam : auto;
-      document.documentElement.style.setProperty('--logo-w', finalSize + 'px');
-
-      // c) active highlight from ?brand=
-      const brandParam = norm(qs.get('brand'));
-      document.querySelectorAll('.brand-card').forEach(card => {
+      // Active highlight via ?brand=...
+      const norm = s => decodeURIComponent(String(s||'').toLowerCase().trim());
+      const activeBrand = norm(qs.get('brand'));
+      document.querySelectorAll('.brand-card').forEach(card=>{
         const name = norm(card.dataset.brand);
         const overlay = card.querySelector('.active-overlay');
-        const active = brandParam && brandParam === name;
-        card.classList.toggle('bg-gradient-to-br', active);
-        card.classList.toggle('from-blue-500/10', active);
-        card.classList.toggle('to-purple-500/10', active);
-        card.classList.toggle('border-2', active);
-        card.classList.toggle('border-blue-400/50', active);
-        card.classList.toggle('shadow-xl', active);
-        card.classList.toggle('shadow-blue-500/20', active);
-        overlay.classList.toggle('opacity-30', active);
-        overlay.classList.toggle('opacity-0', !active);
+        const on = activeBrand && activeBrand === name;
+        card.classList.toggle('bg-gradient-to-br', on);
+        card.classList.toggle('from-blue-500/10', on);
+        card.classList.toggle('to-purple-500/10', on);
+        card.classList.toggle('border-2', on);
+        card.classList.toggle('border-blue-400/50', on);
+        card.classList.toggle('shadow-xl', on);
+        card.classList.toggle('shadow-blue-500/20', on);
+        overlay && overlay.classList.toggle('opacity-30', on);
+        overlay && overlay.classList.toggle('opacity-0', !on);
+      });
+
+      // Force top-window navigation from inside SharePoint embed
+      document.querySelectorAll('.brand-card').forEach(card=>{
+        card.addEventListener('click', function(e){
+          if (e.metaKey || e.ctrlKey || e.button === 1) return; // allow new tab
+          e.preventDefault();
+          const url = this.getAttribute('href');
+          try { window.top.location.assign(url); }
+          catch { window.open(url, '_blank', 'noopener'); }
+        });
       });
     })();
   </script>
