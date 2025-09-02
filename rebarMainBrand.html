@@ -6,12 +6,17 @@
   <title>Brand Rail</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --logo-w: 140px; }
+    :root { --logo-w: 140px; } /* default logo width (16:9 height auto) */
     .scrollbar-hide::-webkit-scrollbar { display: none; }
     .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
     .dx-logo-frame{
-      width:var(--logo-w); aspect-ratio:16/9; background:#fff; border-radius:12px;
-      box-shadow:0 1px 3px rgba(0,0,0,.06); display:flex; align-items:center; justify-content:center; overflow:hidden;
+      width:var(--logo-w);
+      aspect-ratio:16/9;
+      background:#fff; border-radius:12px;
+      box-shadow:0 1px 3px rgba(0,0,0,.06);
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
     }
     .dx-logo-frame img{ max-width:92%; max-height:92%; object-fit:contain; display:block; }
   </style>
@@ -29,6 +34,7 @@
           <div class="dx-logo-frame">
             <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Leviat_Moment_16x9-dGUecxW9QKFDAke2I0wPyOkQe7TYiM.png" alt="Leviat MOMENT" />
           </div>
+          <!-- overlays must NOT intercept clicks -->
           <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
         </div>
         <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
@@ -93,6 +99,7 @@
     </div>
   </div>
 
+  <!-- Helpers: size override & active highlight (no nav override) -->
   <script>
     (function(){
       const qs = new URLSearchParams(location.search);
@@ -119,17 +126,6 @@
         card.classList.toggle('shadow-blue-500/20', on);
         overlay && overlay.classList.toggle('opacity-30', on);
         overlay && overlay.classList.toggle('opacity-0', !on);
-      });
-
-      // Force top-window navigation from inside SharePoint embed
-      document.querySelectorAll('.brand-card').forEach(card=>{
-        card.addEventListener('click', function(e){
-          if (e.metaKey || e.ctrlKey || e.button === 1) return; // allow new tab
-          e.preventDefault();
-          const url = this.getAttribute('href');
-          try { window.top.location.assign(url); }
-          catch { window.open(url, '_blank', 'noopener'); }
-        });
       });
     })();
   </script>
