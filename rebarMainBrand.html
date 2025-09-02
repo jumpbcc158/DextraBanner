@@ -6,23 +6,34 @@
   <title>Brand Rail</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --logo-w: 160px; }                 /* auto-set by JS */
-    html, body { height: 100%; }
-    /* UPDATED background color */
-    body { margin: 0; background:#003143; }
-
+    :root{
+      --logo-w: 160px;             /* auto-fitted; can be overridden by ?size= */
+      --page-bg: transparent;      /* set to #003143 in “teal” theme */
+      --shell-bg: rgba(255,255,255,.78);
+      --accent-a: #1e40af;         /* header blue */
+      --accent-b: #10b981;         /* header green */
+    }
+    html, body { height:100%; }
+    body { margin:0; background:var(--page-bg); }
     .scrollbar-hide::-webkit-scrollbar { display: none; }
     .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* Dense container */
-    .rail-wrap { height: 100%; padding: 6px 8px; }
+    /* Section wrapper = tighter & cleaner */
+    .rail-wrap { height:100%; padding: 6px 12px 10px; box-sizing:border-box; }
+    /* Subtle top accent to match header buttons */
+    .rail-accent {
+      height: 4px; width: 100%; border-radius: 8px 8px 0 0;
+      background: linear-gradient(90deg,var(--accent-a),var(--accent-b));
+      opacity: .9;
+      box-shadow: 0 2px 6px rgba(0,0,0,.08);
+    }
     .rail-shell {
-      height: 100%;
-      padding: 8px;
-      background: rgba(255,255,255,.78);       /* sits on top of the teal */
+      height: calc(100% - 6px);
+      padding: 10px;                  /* tighter than before */
+      background: var(--shell-bg);
       backdrop-filter: blur(4px);
-      border-radius: 14px;
-      box-shadow: 0 6px 20px rgba(0,0,0,.08);
+      border-radius: 0 0 14px 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
       border: 1px solid rgba(255,255,255,.25);
     }
 
@@ -31,18 +42,19 @@
       width: var(--logo-w);
       aspect-ratio: 16 / 9;
       background: #fff;
-      border-radius: 12px;
+      border-radius: 14px;
       box-shadow: 0 1px 3px rgba(0,0,0,.06);
       display: flex; align-items: center; justify-content: center;
       overflow: hidden;
     }
-    .dx-logo-frame img { max-width: 92%; max-height: 92%; object-fit: contain; display: block; }
+    .dx-logo-frame img{ max-width:92%; max-height:92%; object-fit:contain; display:block; }
   </style>
 </head>
 <body>
   <div class="rail-wrap">
+    <div class="rail-accent"></div>
     <div class="rail-shell">
-      <div id="rail" class="flex items-center h-full gap-4 overflow-x-auto scrollbar-hide">
+      <div id="rail" class="flex items-center h-full gap-5 overflow-x-auto scrollbar-hide">
 
         <!-- Leviat MOMENT -->
         <a href="https://dextranet.sharepoint.com/sites/CompetitorsWatch/SitePages/c1.aspx"
@@ -53,9 +65,9 @@
             <div class="dx-logo-frame">
               <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Leviat_Moment_16x9-dGUecxW9QKFDAke2I0wPyOkQe7TYiM.png" alt="Leviat MOMENT" />
             </div>
-            <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+            <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-green-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
           </div>
-          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-green-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-green-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
         </a>
 
         <!-- Leviat Ancon -->
@@ -67,9 +79,9 @@
             <div class="dx-logo-frame">
               <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Leviat_Ancon_16x9-xQFTnjDkwMsCXuCQJsyc7m612npGqE.png" alt="Leviat Ancon" />
             </div>
-            <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+            <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-green-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
           </div>
-          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-green-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-green-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
         </a>
 
         <!-- nVent LENTON -->
@@ -81,9 +93,9 @@
             <div class="dx-logo-frame">
               <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nVent_Lenton_16x9-Q5qIGYYh5nh0ovgpmr5JvXuElxzzjS.png" alt="nVent LENTON" />
             </div>
-            <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+            <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-green-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
           </div>
-          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-green-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-green-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
         </a>
 
         <!-- NMB Splice Sleeve -->
@@ -95,9 +107,9 @@
             <div class="dx-logo-frame">
               <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/NMB_Splice_Sleeve_16x9-AAYZ4tCEYJO0Ye6By7IQwqr0c62ylP.png" alt="NMB Splice Sleeve" />
             </div>
-            <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+            <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-green-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
           </div>
-          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-green-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-green-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
         </a>
 
         <!-- Boowon BMS -->
@@ -109,9 +121,9 @@
             <div class="dx-logo-frame">
               <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Boowon_BMS_16x9-NMRXGjqlOv5EHlYqmWDX8OX5Fz9ln9.png" alt="Boowon BMS" />
             </div>
-            <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+            <div class="active-overlay absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-green-500 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
           </div>
-          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-green-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-green-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none"></div>
         </a>
 
       </div>
@@ -121,6 +133,18 @@
   <script>
     (function () {
       const qs = new URLSearchParams(location.search);
+
+      /* THEME SWITCH
+         - default blends under header (transparent page bg)
+         - add ?theme=teal to get the deep #003143 strip look
+      */
+      const theme = (qs.get('theme') || '').toLowerCase();
+      if (theme === 'teal') {
+        document.documentElement.style.setProperty('--page-bg', '#003143');
+        document.documentElement.style.setProperty('--shell-bg', 'rgba(255,255,255,.80)');
+      }
+
+      // Manual size override: ?size=120..320
       const forced = parseInt(qs.get('size'), 10);
 
       function fitByHeight() {
@@ -130,11 +154,12 @@
         }
         const rail = document.getElementById('rail');
         const railH = rail?.clientHeight || window.innerHeight || 140;
-        const usableH = Math.max(64, railH - 28);
-        const logoW = Math.min(320, Math.round((usableH * 16) / 9));
+        const usableH = Math.max(64, railH - 32);
+        const logoW = Math.min(320, Math.round((usableH * 16) / 9)); // keep 16:9
         document.documentElement.style.setProperty('--logo-w', logoW + 'px');
       }
 
+      // Active highlight via ?brand=...
       const norm = s => decodeURIComponent(String(s || '').toLowerCase().trim());
       const activeBrand = norm(qs.get('brand'));
       document.querySelectorAll('.brand-card').forEach(card => {
@@ -143,7 +168,7 @@
         const on = activeBrand && activeBrand === name;
         card.classList.toggle('bg-gradient-to-br', on);
         card.classList.toggle('from-blue-500/10', on);
-        card.classList.toggle('to-purple-500/10', on);
+        card.classList.toggle('to-green-500/10', on);
         card.classList.toggle('border-2', on);
         card.classList.toggle('border-blue-400/50', on);
         card.classList.toggle('shadow-xl', on);
