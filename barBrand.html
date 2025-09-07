@@ -10,6 +10,7 @@
       --logo-w:160px;               /* auto-fitted; override via ?size= */
       --page-bg:transparent;        /* set via ?theme=teal to #003143 */
       --shell-bg:rgba(255,255,255,.78);
+      --rail-bg:#094780;
       --accent-a:#1e40af;           /* header blue */
       --accent-b:#10b981;           /* header green */
     }
@@ -27,6 +28,7 @@
     .rail-shell{
       height:calc(100% - 6px);padding:10px;background:var(--shell-bg);
       backdrop-filter:blur(4px);border-radius:0 0 14px 14px;
+      background:var(--rail-bg);
       box-shadow:0 10px 30px rgba(0,0,0,.08);
       border:1px solid rgba(255,255,255,.25)
     }
